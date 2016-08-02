@@ -64,7 +64,8 @@ def final_plot(ax):
 
     ax.set_xlabel('$\mathrm{Wavelength\\ (\AA)}$')
     ax.set_ylabel(r'$f_\lambda \; \mathrm{(erg\; s^{-1}\;cm^{-2}\;\AA^{-1}})$')
-    ax.set_xlim(8950, 10300)
+    ax.set_xlim(lya0.value * (redshift+0.4), lya0.value * (redshift+1.8))
+    ax.set_ylim(bottom=-0.1e-17)
     plt.title(output)
     f.savefig(output + ".png")
     print(output + ".png", " created")
