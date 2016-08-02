@@ -7,21 +7,21 @@ These are the needed steps:
 
 1. Create a continuum model. We actually just need a model from the region with rest-frame wavelength < 1300 AA. This includes Lya+NV and the continuum blueward of Lya.
 
-A simple (-istic) way to do this is with the code `cont_model.py`, which requires the redshift and the spectra of the quasar as input. It "fits" a powerlaw continuum with a fix index (chosen by the user). It also fits two Gaussians to Lya and NV based on the input redshift.
-Write a file with wavelength, flux, (error), continuum.
+    A simple (-istic) way to do this is with the code `cont_model.py`, which requires the redshift and the spectra of the quasar as input. It "fits" a powerlaw continuum with a fix index (chosen by the user). It also fits two Gaussians to Lya and NV based on the input redshift.
+    Write a file with wavelength, flux, (error), continuum.
 
-Example of input file called test.info:
+    Example of input file called test.info:
 
-    name   redshift spectra alpha_lambda
-    qso1     6.6    qso1.spc  -1.7
-    qso2     6.0    qso2.spc  -1.5
+        name   redshift spectra alpha_lambda
+        qso1     6.6    qso1.spc  -1.7
+        qso2     6.0    qso2.spc  -1.5
 
-Example:
-```python
-python cont_model.py test.info
-```
+    Example:
+    ```python
+    python cont_model.py test.info
+    ```
 
-Note that you can do the continuum fit in more elaborate ways. Choose the one that makes more sense for your data
+    Note that you can do the continuum fit in more elaborate ways. Choose the one that makes more sense for your data
 
 
 
