@@ -64,7 +64,7 @@ def final_plot(ax):
 
     ax.set_xlabel('$\mathrm{Wavelength\\ (\AA)}$')
     ax.set_ylabel(r'$f_\lambda \; \mathrm{(erg\; s^{-1}\;cm^{-2}\;\AA^{-1}})$')
-    ax.set_xlim(lya0.value * (redshift+0.4), lya0.value * (redshift+1.8))
+    ax.set_xlim(lya0.value * (redshift+0.4), lya0.value * (redshift+1.9))
     ax.set_ylim(bottom=-0.1e-17)
     plt.title(output)
     f.savefig(output + ".png")
@@ -295,19 +295,21 @@ if __name__ == '__main__':
         print("="*60)
         print(row['name'])
         obs_spc = readspec(row["spectra"])
-
+        redshift = row["redshift"]
         filename, file_extension = os.path.splitext(row["spectra"])
         output = filename + "_" +"z" + str(row["redshift"]) + str(row["alpha_lambda"]) + "_cont"
 
         f, ax = plt.subplots()
 
         ax.plot(obs_spc.wavelength, obs_spc.flux, lw=3, color="k")
+        if obs_spc.sig_is_set:
+            ax.plot(obs_spc.wavelength, obs_spc.sig, lw=1, color="gray")
 
         continuum_powerlaw, continuum_subtracted = get_powerlaw_continuum(data=row, ax=ax)
         #ax.plot(obs_spc.wavelength, continuum_subtracted, lw=3, color="k")
 
         continuum_lya = get_gaussian_fits(wave= obs_spc.wavelength.value, flux=continuum_subtracted,
-                                        error=obs_spc.sig, redshift=row["redshift"], ax=ax)
+                                        error=obs_spc.sig, redshift=redshift, ax=ax)
 
         continuum_model = continuum_powerlaw + continuum_lya
         obs_spc.co = continuum_model
