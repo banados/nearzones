@@ -315,22 +315,3 @@ if __name__ == '__main__':
         final_plot(ax)
 
         write_spectrum_with_continuum()
-        
-        
-
-# #read spectrum
-# s = readspec("test/P006+39lris_yp1.spc")
-# #We need the powerlaw model calculated from other program,
-# #maybe include that also here
-# qso_param = {"redshift":6.61,
-#             "amplitude":1.07e-12, "Beta":-1.7}
-# zp1 = qso_param["redshift"] + 1.0
-
-# PL = PowerLaw1D(qso_param["amplitude"], alpha=-qso_param["Beta"])
-
-# s_rest = XSpectrum1D.from_tuple((s.wavelength.value/zp1, s.flux.value))
-# s_rest.co =  PL(s_rest.wavelength.value)
-
-# transm = s_rest.flux / s_rest.co
-
-# s_trans = XSpectrum1D.from_tuple((s_rest.wavelength,transm))

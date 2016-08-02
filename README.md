@@ -28,13 +28,13 @@ These are the needed steps:
 2. The code `nearzones.py` receives the spectrum from 1. Normalize the observed spectrum by its continuum. The resultant transmission is smoothed to a resolution of 20 Angstroms (ala Fan et al.). Wavelengths are transformed to Proper distance (Mpc) from rest-frame Lya. It estimates the proper distance when the transmission drops to 10 percent and report the value. A plot is created as a check and a new file with wavelength, proper distance in Mpc wrt Lya, and the transmission is also created.
 
 
-Example of input file called testnz.info:
+    Example of input file called testnz.info:
 
-    name   redshift spectra alpha_lambda
-    qso1     6.6    qso1_cont.spc  -1.7
-    qso2     6.0    qso2_cont.spc  -1.5
+        name   redshift spectra alpha_lambda
+        qso1     6.6    qso1_cont.spc  -1.7
+        qso2     6.0    qso2_cont.spc  -1.5
 
-Example:
-```python
-python nearzones.py testnz.info
-```
+    Example:
+    ```python
+    python nearzones.py testnz.info
+    ```
