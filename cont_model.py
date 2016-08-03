@@ -142,6 +142,7 @@ def get_gaussian_fits(wave, flux, error, redshift, ax):
                  mean=nvredshifted, stddev=2.71 * (1+redshift))
 
     gg_init = g1 + g2
+    gg_init.amplitude_1.min = 0
     fitter = fitting.LevMarLSQFitter()
     gg_fit = fitter(gg_init, w, f)
 
